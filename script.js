@@ -37,28 +37,28 @@ function playRound(human, computer) {
     if ( computer === human) {
         console.log(`It is a tie! Both chose: ${computer}`);
         console.log(`Computer: ${computerScore} - Human: ${humanScore}.`);
-        roundResultSpan.textContent = `It is a tie. Both chose ${computer}!`;
+        roundResultSpan.textContent = `It is a tie!`;
     } else if( computer === "rock" && human === "scissors"
              || computer === "paper" && human === "rock"
              || computer === "scissors" && human === "paper") {
         console.log(`Computer wins with ${computer}.`);
         ++computerScore;
         console.log(`Computer: ${computerScore} - Human: ${humanScore}.`);
-        roundResultSpan.textContent = `Computer wins with ${computer}`;
+        roundResultSpan.textContent = `computer wins!`;
     } else {                    // This accepts random values and gives you the win
         console.log(`Human wins with ${human}.`);
         ++humanScore;
         console.log(`Computer: ${computerScore} - Human: ${humanScore}.`);
-        roundResultSpan.textContent = `Human wins with ${human}`;
+        roundResultSpan.textContent = `human wins!`;
 
     }
     computerScoreSpan.textContent = computerScore;
     humanScoreSpan.textContent = humanScore;
 }
 
-function playGame() {
+function playGame(human, computer) {
     while(round < 6){
-        playRound();
+        playRound(human, computer);
         round++;
     }
     if(computerScore === humanScore) {
@@ -86,18 +86,38 @@ imagesArray.forEach((element, index) => {
 const body = document.querySelector("body");
 const playerSelection = document.querySelector("#playerSelection");
 const computerSelection = document.querySelector("#computerSelection");
-body.addEventListener("click", (e) => {
-    let targetTag = e.target.tagName;
-    let parentId = e.target.parentNode.id;
-    let humanChoice = e.target.getAttribute("value");
-// value for human choice
+const roundNumber = document.querySelector("#round");
+const roundTitle = document.querySelector("#roundTitle");
+
+body.addEventListener("click", playARound);
+
+
+function playARound(e) {
+    if(round > 4) {
+        // return console.log("game is over!");
+        body.removeEventListener("click", playARound);
+
+    }
+        let targetTag = e.target.tagName;
+        let parentId = e.target.parentNode.id;
+        let humanChoice = e.target.getAttribute("value");
+        // value for human choice
         if(targetTag === "IMG" && parentId === "human") {
             playerSelection.textContent = `${humanChoice}`;
-        let computerValue = getComputerChoice();
+            let computerValue = getComputerChoice();
             computerSelection.textContent = computerValue;
-            console.log(`Player: ${humanChoice} | Computer: ${computerValue}`);
-
             playRound(humanChoice, computerValue);
-    }
+            round++; 
+            console.log(round);
+            if(round < 6) {
+                roundNumber.textContent = round;
+            } else {
+                roundTitle.textContent = "MATCH OVER!";
+                roundNumber.textContent = "";
+            }
+        };
+};
 
-});
+// create a fake event ;
+
+

@@ -70,12 +70,17 @@ img {
     justify-content: center;
     gap: 20px;
     min-width: 250px;
+    min-height: 100px;
     /* overflow: hidden; */
 }
 
 #roundResultDiv {
     display: flex;
     justify-content: center;
+}
+
+#roundResult {
+    min-height: 16px;
 }
 
 #versus {
@@ -109,7 +114,7 @@ img {
 
 #playerSelection,
 #computerSelection {
-    flex: 0 0 50px;
+    flex: 0 0 85px;
 }
 
 #computerSelection {
