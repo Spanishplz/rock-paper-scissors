@@ -60,4 +60,4 @@ function playGame() {
     };
 }
 
-playGame();
+// playGame();
