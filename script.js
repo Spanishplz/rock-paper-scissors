@@ -1,6 +1,7 @@
 let humanScore = 0;
 let computerScore = 0;
 let round = 1;
+
 function getComputerChoice() {
     let choice = "";
     let result = Math.random()*(3 - 1 + 1) + 1;
@@ -17,16 +18,18 @@ function getComputerChoice() {
 }
 
 
-function getHumanChoice() {
-    let humanChoice = prompt("Rock, paper or scissors?");
-    let humanChoiceLower = humanChoice.toLowerCase();
-    return humanChoiceLower;
-    console.log(humanChoiceLower); // delete
-}
+// function getHumanChoice() {
+//     let humanChoice = prompt("Rock, paper or scissors?");
+//     let humanChoiceLower = humanChoice.toLowerCase();
+//     return humanChoiceLower;
+//     console.log(humanChoiceLower); // delete
+// }
 
-function playRound() {
-    let computer = getComputerChoice();
-    let human = getHumanChoice();
+// score references
+const humanScoreSpan = document.querySelector("#playerScore");
+const computerScoreSpan = document.querySelector("#computerScore");
+
+function playRound(human, computer) {
     console.log(`Round ${round}`);
     console.log(`Computer: ${computer} - human: ${human}.`);
     // 9 possibiities in total, 3 go on ties.
@@ -38,10 +41,12 @@ function playRound() {
              || computer === "scissors" && human === "paper") {
         console.log(`Computer wins with ${computer}.`);
         ++computerScore;
+        computerScoreSpan.textContent = computerScore;
         console.log(`Computer: ${computerScore} - Human: ${humanScore}.`);
     } else {                    // This accepts random values and gives you the win
         console.log(`Human wins with ${human}.`);
         ++humanScore;
+        humanScoreSpan.textContent = humanScore;
         console.log(`Computer: ${computerScore} - Human: ${humanScore}.`);
     }
 }
@@ -65,12 +70,29 @@ function playGame() {
 const images = document.querySelectorAll("#human img");
 const versus = document.querySelector("#verses");
 
-const imagesArray = Array.from(images);
-
 // set a value attribute to the images
-console.log(imagesArray);
+const imagesArray = Array.from(images);
 imagesArray.forEach((element, index) => {
-    console.log(element);;
     element.setAttribute("value", `${element.id}`);
 });
 
+// body event listener
+
+const body = document.querySelector("body");
+const playerSelection = document.querySelector("#playerSelection");
+const computerSelection = document.querySelector("#computerSelection");
+body.addEventListener("click", (e) => {
+    let targetTag = e.target.tagName;
+    let parentId = e.target.parentNode.id;
+    let humanChoice = e.target.getAttribute("value");
+// value for human choice
+        if(targetTag === "IMG" && parentId === "human") {
+            playerSelection.textContent = `${humanChoice}`;
+        let computerValue = getComputerChoice();
+            computerSelection.textContent = computerValue;
+            console.log(`Player: ${humanChoice} | Computer: ${computerValue}`);
+
+            playRound(humanChoice, computerValue);
+    }
+
+});
