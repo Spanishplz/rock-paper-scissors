@@ -67,8 +67,8 @@ img {
     border: 1px solid black;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 100px;
+    justify-content: center;
+    gap: 20px;
     min-width: 250px;
     /* overflow: hidden; */
 }

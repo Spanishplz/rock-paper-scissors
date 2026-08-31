@@ -28,6 +28,7 @@ function getComputerChoice() {
 // score references
 const humanScoreSpan = document.querySelector("#playerScore");
 const computerScoreSpan = document.querySelector("#computerScore");
+const roundResultSpan = document.querySelector("#roundResult");
 
 function playRound(human, computer) {
     console.log(`Round ${round}`);
@@ -36,19 +37,23 @@ function playRound(human, computer) {
     if ( computer === human) {
         console.log(`It is a tie! Both chose: ${computer}`);
         console.log(`Computer: ${computerScore} - Human: ${humanScore}.`);
+        roundResultSpan.textContent = `It is a tie. Both chose ${computer}!`;
     } else if( computer === "rock" && human === "scissors"
              || computer === "paper" && human === "rock"
              || computer === "scissors" && human === "paper") {
         console.log(`Computer wins with ${computer}.`);
         ++computerScore;
-        computerScoreSpan.textContent = computerScore;
         console.log(`Computer: ${computerScore} - Human: ${humanScore}.`);
+        roundResultSpan.textContent = `Computer wins with ${computer}`;
     } else {                    // This accepts random values and gives you the win
         console.log(`Human wins with ${human}.`);
         ++humanScore;
-        humanScoreSpan.textContent = humanScore;
         console.log(`Computer: ${computerScore} - Human: ${humanScore}.`);
+        roundResultSpan.textContent = `Human wins with ${human}`;
+
     }
+    computerScoreSpan.textContent = computerScore;
+    humanScoreSpan.textContent = humanScore;
 }
 
 function playGame() {
