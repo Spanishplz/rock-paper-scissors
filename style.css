@@ -14,3 +14,77 @@ h1 {
     background-color: lightgrey;
 }
 
+h2  {
+    font-size: 35px;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+}
+
+#content {
+    display: flex;
+    justify-content: space-around;
+}
+
+#content-human,
+#content-computer{
+    display:flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#human {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+img {
+    flex: 0 0 auto;
+}
+
+#match {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#robot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#versusDiv {
+    border: 1px solid black;
+    height: 100px;
+    width: 200px;
+}
+#versus {
+    font-size: 40px;
+}
+
+#roundDiv {
+    justify-self: flex-start;
+}
+
+#scoresDiv {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+#playerScoreDiv,
+#computerScoreDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+#selectionDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}

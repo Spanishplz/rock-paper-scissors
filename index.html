@@ -5,29 +5,68 @@
         <title>Document</title>
         <link rel="stylesheet" href="reset.css">
         <link rel="stylesheet" href="style.css">
-        <script src="script.js"></script>
+        <script src="script.js" defer></script>
     </head>
     <body>
         <div id="header">
             <h1 id="title">Rock, Paper, Scissors!</h1>
         </div>
         <div id="content">
-            <div id="human">
-                <img alt="" src=""/>
-                <img alt="" src=""/>
-                <img alt="" src=""/>
+            <div id="content-human">
+                <h2>human</h2>
+                <div id="human">
+                    <img id="rock" alt="" src="images/placeholder.jpg" style="max-height: 125px; max-width: 125px"/>
+                    <img id="paper" alt="" src="images/placeholder.jpg" style="max-height: 125px; max-width: 125px"/>
+                    <img id="scissors" ALT="" src="images/placeholder.jpg" style="max-height: 125px; max-width: 125px"/>
+                </div>
             </div>
-            <div id="match"></div>
-            <div id="robot">
-                <img alt="" src=""/>
+
+            <div id="match">
+                <div id="roundDiv">
+                    <span id="roundTitle">ROUND</span>
+                    <span id="round">9</span>
+                </div>
+                <div id="scoresDiv">
+                    <div id="playerScoreDiv">
+                        <span id="playerScoreTitle">
+                            Player
+                        </span>
+                        <span id="playerScore">
+                            1
+                        </span>
+                    </div>
+                    <div id="computerScoreDiv">
+                        <span id="computerScoreTitle">
+                            Computer
+                        </span>
+                        <span id="computerScore">
+                            0
+                        </span>
+                    </div>
+                </div>
+                <div id="versusDiv">
+                    <div id="selectionDiv">
+                        <span id="playerSelection">rock</span>
+                        <span id="versus">VS</span>
+                        <span id="computerSelection">paper</span>
+                    </div>
+                </div>
+                <div id="resultDiv">
+                    <span id="resultTitle">RESULT</span>
+                    <span id="result">computer wins!</span>
+                </div>
+
+            </div>
+            <div id="content-computer">
+                <div id="computer">
+                    <img id="computer" alt="" src="images/placeholder.jpg" style="max-height: 125px; max-width: 125px"/>
+                </div>
+                <h2>computer</h2>
             </div>
         </div>
         <div id="footer">
             <h1 id="top">the odin project</h1>
         </div>
-        
+
     </body>
 </html>
-
-
-

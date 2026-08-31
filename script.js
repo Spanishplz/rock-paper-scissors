@@ -61,3 +61,16 @@ function playGame() {
 }
 
 // playGame();
+
+const images = document.querySelectorAll("#human img");
+const versus = document.querySelector("#verses");
+
+const imagesArray = Array.from(images);
+
+// set a value attribute to the images
+console.log(imagesArray);
+imagesArray.forEach((element, index) => {
+    console.log(element);;
+    element.setAttribute("value", `${element.id}`);
+});
+
