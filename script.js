@@ -56,19 +56,7 @@ function playRound(human, computer) {
     humanScoreSpan.textContent = humanScore;
 }
 
-function playGame(human, computer) {
-    while(round < 6){
-        playRound(human, computer);
-        round++;
-    }
-    if(computerScore === humanScore) {
-        console.log(`It is a tie with ${computerScore} points each.`);
-    } else if (computerScore > humanScore) {
-        console.log(`Computer wins with ${computerScore} points.`);
-    } else {
-        console.log(`Human wins with ${humanScore} points.`);
-    };
-}
+
 
 // playGame();
 
@@ -91,11 +79,11 @@ const roundTitle = document.querySelector("#roundTitle");
 
 body.addEventListener("click", playARound);
 
-
 function playARound(e) {
     if(round > 4) {
         // return console.log("game is over!");
         body.removeEventListener("click", playARound);
+        reset.classList.toggle("hide");
 
     }
         let targetTag = e.target.tagName;
@@ -114,10 +102,49 @@ function playARound(e) {
             } else {
                 roundTitle.textContent = "MATCH OVER!";
                 roundNumber.textContent = "";
+                gameResult();
             }
         };
 };
 
-// create a fake event ;
 
+const resultDiv = document.querySelector("#result");
+
+function gameResult(event) {
+    if(computerScore === humanScore) {
+        console.log(`It is a tie with ${computerScore} points each.`);
+        resultDiv.textContent = `It is a tie with ${computerScore} points each.`;
+    } else if (computerScore > humanScore) {
+        console.log(`Computer wins with ${computerScore} points.`);
+        resultDiv.textContent = `Computer wins with ${computerScore} points.`;
+    } else {
+        console.log(`Player wins with ${humanScore} points.`);
+        resultDiv.textContent = `Player wins with ${humanScore} points.`;
+    };
+}
+
+
+const reset = document.querySelector("button#restart");
+function buttonAppear(e) {
+    console.log(e);
+    e.target.classList.toggle("hide");
+}
+
+
+reset.addEventListener("click", resetAll);
+
+function resetAll() {
+    humanScore = 0;
+    computerScore = 0;
+    round = 1;
+    computerScoreSpan.textContent = "0";
+    humanScoreSpan.textContent = "0";
+    resultDiv.textContent = ``;
+    playerSelection.textContent =  "select!";
+    computerSelection.textContent = "...processing";
+    roundResultSpan.textContent = ``;
+    body.addEventListener("click", playARound);
+    reset.classList.toggle("hide");
+
+}
 
