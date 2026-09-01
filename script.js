@@ -31,24 +31,16 @@ const computerScoreSpan = document.querySelector("#computerScore");
 const roundResultSpan = document.querySelector("#roundResult");
 
 function playRound(human, computer) {
-    console.log(`Round ${round}`);
-    console.log(`Computer: ${computer} - human: ${human}.`);
     // 9 possibiities in total, 3 go on ties.
     if ( computer === human) {
-        console.log(`It is a tie! Both chose: ${computer}`);
-        console.log(`Computer: ${computerScore} - Human: ${humanScore}.`);
         roundResultSpan.textContent = `It is a tie!`;
     } else if( computer === "rock" && human === "scissors"
              || computer === "paper" && human === "rock"
              || computer === "scissors" && human === "paper") {
-        console.log(`Computer wins with ${computer}.`);
         ++computerScore;
-        console.log(`Computer: ${computerScore} - Human: ${humanScore}.`);
         roundResultSpan.textContent = `computer wins!`;
     } else {                    // This accepts random values and gives you the win
-        console.log(`Human wins with ${human}.`);
         ++humanScore;
-        console.log(`Computer: ${computerScore} - Human: ${humanScore}.`);
         roundResultSpan.textContent = `human wins!`;
 
     }
@@ -96,7 +88,6 @@ function playARound(e) {
             computerSelection.textContent = computerValue;
             playRound(humanChoice, computerValue);
             round++; 
-            console.log(round);
             if(round < 6) {
                 roundNumber.textContent = round;
             } else {
@@ -107,18 +98,29 @@ function playARound(e) {
         };
 };
 
+const imagesAll = document.querySelectorAll("#human img");
+
+imagesAll.forEach((image) => {
+    image.addEventListener("mouseover", mouseOver);
+    image.addEventListener("mouseout", mouseOut);
+});
+
+
+function mouseOver(e){
+    e.target.classList.toggle("mouseOver");
+}
+function mouseOut(e){
+    e.target.classList.toggle("mouseOver");
+}
 
 const resultDiv = document.querySelector("#result");
 
 function gameResult(event) {
     if(computerScore === humanScore) {
-        console.log(`It is a tie with ${computerScore} points each.`);
         resultDiv.textContent = `It is a tie with ${computerScore} points each.`;
     } else if (computerScore > humanScore) {
-        console.log(`Computer wins with ${computerScore} points.`);
         resultDiv.textContent = `Computer wins with ${computerScore} points.`;
     } else {
-        console.log(`Player wins with ${humanScore} points.`);
         resultDiv.textContent = `Player wins with ${humanScore} points.`;
     };
 }
@@ -126,7 +128,6 @@ function gameResult(event) {
 
 const reset = document.querySelector("button#restart");
 function buttonAppear(e) {
-    console.log(e);
     e.target.classList.toggle("hide");
 }
 
