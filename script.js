@@ -17,21 +17,12 @@ function getComputerChoice() {
     return choice;
 }
 
-
-// function getHumanChoice() {
-//     let humanChoice = prompt("Rock, paper or scissors?");
-//     let humanChoiceLower = humanChoice.toLowerCase();
-//     return humanChoiceLower;
-//     console.log(humanChoiceLower); // delete
-// }
-
 // score references
 const humanScoreSpan = document.querySelector("#playerScore");
 const computerScoreSpan = document.querySelector("#computerScore");
 const roundResultSpan = document.querySelector("#roundResult");
 
 function playRound(human, computer) {
-    // 9 possibiities in total, 3 go on ties.
     if ( computer === human) {
         roundResultSpan.textContent = `It is a tie!`;
     } else if( computer === "rock" && human === "scissors"
@@ -39,7 +30,7 @@ function playRound(human, computer) {
              || computer === "scissors" && human === "paper") {
         ++computerScore;
         roundResultSpan.textContent = `computer wins!`;
-    } else {                    // This accepts random values and gives you the win
+    } else {                 
         ++humanScore;
         roundResultSpan.textContent = `human wins!`;
 
@@ -48,9 +39,6 @@ function playRound(human, computer) {
     humanScoreSpan.textContent = humanScore;
 }
 
-
-
-// playGame();
 
 const images = document.querySelectorAll("#human img");
 const versus = document.querySelector("#verses");
@@ -62,7 +50,6 @@ imagesArray.forEach((element, index) => {
 });
 
 // body event listener
-
 const body = document.querySelector("body");
 const playerSelection = document.querySelector("#playerSelection");
 const computerSelection = document.querySelector("#computerSelection");
@@ -73,7 +60,6 @@ body.addEventListener("click", playARound);
 
 function playARound(e) {
     if(round > 4) {
-        // return console.log("game is over!");
         body.removeEventListener("click", playARound);
         reset.classList.toggle("hide");
 
@@ -124,7 +110,6 @@ function gameResult(event) {
         resultDiv.textContent = `Player wins with ${humanScore} points.`;
     };
 }
-
 
 const reset = document.querySelector("button#restart");
 function buttonAppear(e) {
